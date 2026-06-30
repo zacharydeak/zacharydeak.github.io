@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zachary Deak — Old Dominion University</title>
+
+<!-- ============================================================
+     FONTS — loaded from Google Fonts. Nothing to install.
+     Newsreader: a literary serif, used for everything you read.
+     Inter: a quiet utility face, used only for small labels + nav.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+
+<style>
+  /* ===========================================================
+     DESIGN TOKENS — change these in one place to re-skin the site
+     =========================================================== */
+  :root {
+    --paper:    #FCFCFA;  /* page background — soft near-white      */
+    --ink:      #1A1A1A;  /* main text                              */
+    --muted:    #6B6661;  /* captions, labels, secondary text       */
+    --hairline: #E3E0D9;  /* thin rules + the musical staff divider */
+    --accent:   #3A4A63;  /* links — a quiet slate blue             */
+    --accent-2: #25324a;  /* link hover                             */
+
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", system-ui, -apple-system, sans-serif;
+
+    --measure: 38rem;     /* reading width — keeps lines comfortable */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    line-height: 1.65;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    transition: color .15s ease, border-color .15s ease;
+  }
+  a:hover { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ---------- Eyebrow label (the small uppercase tags) ---------- */
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.6rem;
+  }
+
+  /* ===========================================================
+     MASTHEAD
+     =========================================================== */
+  header.masthead {
+    padding: 5rem 0 0;
+  }
+  .name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.1rem, 5.5vw, 2.9rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .role {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--muted);
+    margin: 0.5rem 0 0;
+  }
+  .affil {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0.35rem 0 0;
+  }
+
+  /* ---------- Nav — plain anchor links ---------- */
+  nav.links {
+    margin-top: 1.6rem;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+  }
+  nav.links a {
+    border: none;
+    color: var(--muted);
+    margin-right: 1.4rem;
+    display: inline-block;
+  }
+  nav.links a:hover { color: var(--ink); }
+
+  /* ===========================================================
+     SIGNATURE DIVIDER — a five-line musical staff in hairline
+     This is the one motif that says "musician" without shouting.
+     =========================================================== */
+  .staff {
+    height: 21px;          /* 5 lines, 5px apart */
+    margin: 3.2rem 0;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--hairline) 0, var(--hairline) 1px,
+      transparent 1px, transparent 6px
+    );
+    background-size: 100% 21px;
+    background-repeat: no-repeat;
+  }
+
+  /* ===========================================================
+     SECTIONS
+     =========================================================== */
+  section { padding: 0.4rem 0; }
+  section h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.45rem;
+    margin: 0 0 0.9rem;
+  }
+  section p { margin: 0 0 1.1rem; }
+  section p:last-child { margin-bottom: 0; }
+
+  /* A simple list for publications / teaching / performances */
+  .entries { margin: 0; padding: 0; list-style: none; }
+  .entries li {
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .entries li:first-child { border-top: none; padding-top: 0; }
+  .entry-title { display: block; }
+  .entry-meta {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* Contact block */
+  .contact dl { margin: 0; }
+  .contact div { display: flex; gap: 1rem; padding: 0.35rem 0; }
+  .contact dt {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 5.5rem;
+    padding-top: 0.25rem;
+  }
+  .contact dd { margin: 0; }
+
+  /* ===========================================================
+     FOOTER
+     =========================================================== */
+  footer {
+    margin: 4rem 0 5rem;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Respect users who prefer less motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- =========================================================
+       MASTHEAD
+       ========================================================= -->
+  <header class="masthead">
+    <h1 class="name">Zachary Deak</h1>
+    <p class="role">Assistant Professor of Piano &amp; Musicology · Director of Keyboard Studies</p>
+    <p class="affil">Old Dominion University · Norfolk, Virginia</p>
+
+    <nav class="links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#performance">Performance</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#contact">Contact</a>
+      <a href="cv.pdf">CV</a>
+    </nav>
+  </header>
+
+  <div class="staff" role="presentation"></div>
+
+  <!-- =========================================================
+       ABOUT
+       ========================================================= -->
+  <section id="about">
+    <p class="eyebrow">About</p>
+    <p>Pianist Zachary Deak has appeared as a soloist and chamber musician
+       across the United States, France, Morocco, Portugal, Moldova, and the
+       United Kingdom, at venues including the Dorothy Chandler Pavilion in
+       Los Angeles, the Cité de la Musique and Salle Cortot in Paris, and the
+       Casa da Música in Porto.</p>
+    <p>His performing is closely tied to his research on piano pedagogy,
+       interpretation, and cultural memory. A graduate of the École Normale
+       de Musique de Paris and the Royal College of Music in London, he holds
+       a Doctor of Musical Arts in Piano Performance from the University of
+       Southern California. He worked intensively with Maria João Pires in
+       Paris and Brussels, and received the Hopkinson Silver Medal at the
+       Chappell Medal Piano Competition in London.</p>
+  </section>
+
+  <div class="staff" role="presentation"></div>
+
+  <!-- =========================================================
+       RESEARCH
+       ========================================================= -->
+  <section id="research">
+    <h2>Research</h2>
+    <ul class="entries">
+      <li>
+        <span class="entry-title">“Pianistic Memorization as Cultural Memory: Insights from Religious and Devotional Traditions”</span>
+        <span class="entry-meta">Journal of Piano Research · forthcoming</span>
+      </li>
+      <li>
+        <span class="entry-title">“The Seventh Book: An Interdisciplinary Approach to Piano Study”</span>
+        <span class="entry-meta">EPTA Piano Journal</span>
+      </li>
+      <li>
+        <span class="entry-title">“Revivre le cours: Alfred Cortot, archives pédagogiques et transmission interprétative sur le Steinway 1907”</span>
+        <span class="entry-meta">Crédit Agricole d’Île-de-France Research Fellowship · Bibliothèque musicale La Grange-Fleuret, Paris · 2026</span>
+      </li>
+    </ul>
+  </section>
+
+  <div class="staff" role="presentation"></div>
+
+  <!-- =========================================================
+       PERFORMANCE
+       ========================================================= -->
+  <section id="performance">
+    <h2>Performance</h2>
+    <ul class="entries">
+      <li>
+        <span class="entry-title">Liszt — Piano Concerto No. 2</span>
+        <span class="entry-meta">ODU Symphony Orchestra</span>
+      </li>
+      <li>
+        <span class="entry-title">Lecture-recital on American pedagogical piano music</span>
+        <span class="entry-meta">University of Music and Performing Arts, Vienna</span>
+      </li>
+      <li>
+        <span class="entry-title">Jessie Montgomery — <em>Peace</em>, for clarinet and piano</span>
+        <span class="entry-meta">Virginia Arts Festival</span>
+      </li>
+      <li>
+        <span class="entry-title">Jimmy Carter Forum on U.S.–China Relations</span>
+        <span class="entry-meta">The Carter Center, Atlanta</span>
+      </li>
+      <li>
+        <span class="entry-title">Henry J. Bruman Summer Chamber Music Festival</span>
+        <span class="entry-meta">UCLA</span>
+      </li>
+    </ul>
+  </section>
+
+  <div class="staff" role="presentation"></div>
+
+  <!-- =========================================================
+       TEACHING
+       ========================================================= -->
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <ul class="entries">
+      <li>
+        <span class="entry-title">Director of Keyboard Studies · Applied Piano</span>
+        <span class="entry-meta">Old Dominion University</span>
+      </li>
+      <li>
+        <span class="entry-title">“Piano with Zachary Deak”</span>
+        <span class="entry-meta">Online instruction via the ArtistWorks platform</span>
+      </li>
+      <li>
+        <span class="entry-title">Previously</span>
+        <span class="entry-meta">Cal State University, Los Angeles · Cuesta College, San Luis Obispo</span>
+      </li>
+    </ul>
+  </section>
+
+  <div class="staff" role="presentation"></div>
+
+  <!-- =========================================================
+       CONTACT  —  add your real email + profile links
+       ========================================================= -->
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <dl>
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:[you]@odu.edu">[you]@odu.edu</a></dd>
+      </div>
+      <div>
+        <dt>Office</dt>
+        <dd>Diehn Center for the Performing Arts · Old Dominion University</dd>
+      </div>
+      <div>
+        <dt>Elsewhere</dt>
+        <dd><a href="#">Piano with Zachary Deak</a> · <a href="#">Google Scholar</a></dd>
+      </div>
+    </dl>
+  </section>
+
+  <footer>
+    © <span id="year">2026</span> Zachary Deak
+  </footer>
+
+</div>
+
+<script>
+  // Keeps the footer year current with zero maintenance.
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
