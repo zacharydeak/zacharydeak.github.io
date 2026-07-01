@@ -29,7 +29,7 @@
     --serif: "Newsreader", Georgia, "Times New Roman", serif;
     --sans:  "Inter", system-ui, -apple-system, sans-serif;
 
-    --measure: 38rem;     /* reading width — keeps lines comfortable */
+    --measure: 46rem;     /* reading width — broader, roomier page   */
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -105,6 +105,15 @@
     color: var(--muted);
     margin: 0.35rem 0 0;
   }
+  /* ---------- Lead tagline under the masthead ---------- */
+  .tagline {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin: 1.2rem 0 0;
+    max-width: 40rem;
+  }
 
   /* ---------- Nav — plain anchor links ---------- */
   nav.links {
@@ -151,6 +160,17 @@
   section p { margin: 0 0 1.1rem; }
   section p:last-child { margin-bottom: 0; }
 
+  /* Subheading inside a section (e.g. "Current Projects") */
+  .subhead {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1.7rem 0 0.7rem;
+  }
+
   /* A simple list for publications / teaching / performances */
   .entries { margin: 0; padding: 0; list-style: none; }
   .entries li {
@@ -158,7 +178,8 @@
     border-top: 1px solid var(--hairline);
   }
   .entries li:first-child { border-top: none; padding-top: 0; }
-  .entry-title { display: block; }
+  .entry-title { display: block; font-weight: 500; }
+  .entry-desc { margin: 0.4rem 0 0; }
   .entry-meta {
     font-family: var(--sans);
     font-size: 0.8rem;
@@ -210,6 +231,7 @@
     <h1 class="name">Zachary Deak</h1>
     <p class="role">Assistant Professor of Piano &amp; Musicology · Director of Keyboard Studies</p>
     <p class="affil">Old Dominion University · Norfolk, Virginia</p>
+    <p class="tagline">Pianist-scholar working across performance, pedagogy, archival research, and AI-assisted music analysis.</p>
 
     <nav class="links" aria-label="Sections">
       <a href="#about">About</a>
@@ -229,14 +251,18 @@
        ========================================================= -->
   <section id="about">
     <p class="eyebrow">About</p>
-    <p>Pianist Zachary Deak has appeared as a soloist and chamber musician
-       across the United States, France, Morocco, Portugal, Moldova, and the
-       United Kingdom, at venues including the Dorothy Chandler Pavilion in
-       Los Angeles, the Cité de la Musique and Salle Cortot in Paris, and the
-       Casa da Música in Porto.</p>
+    <p>Zachary Deak is a pianist and musicologist whose work brings together
+       performance, historical research, and the study of musical
+       interpretation. He has appeared as a soloist and chamber musician across
+       the United States, France, Morocco, Portugal, Moldova, and the United
+       Kingdom, with performances at venues including the Dorothy Chandler
+       Pavilion in Los Angeles, the Cité de la Musique and Salle Cortot in
+       Paris, and the Casa da Música in Porto.</p>
     <p>A graduate of the École Normale de Musique de Paris and the Royal
        College of Music in London, he holds a Doctor of Musical Arts in Piano
-       Performance from the University of Southern California.</p>
+       Performance from the University of Southern California. He is Assistant
+       Professor of Piano and Musicology and Director of Keyboard Studies at
+       Old Dominion University.</p>
   </section>
 
   <div class="staff" role="presentation"></div>
@@ -246,20 +272,32 @@
        ========================================================= -->
   <section id="research">
     <h2>Research</h2>
-    <p>Deak’s research bridges performance and scholarship, centering on piano
-       pedagogy, performance practice, and the cultural transmission of
-       interpretation.</p>
+    <p>Deak’s research examines how musical interpretation is taught,
+       transmitted, remembered, and transformed across institutions, cultures,
+       and technologies. His work centers on piano pedagogy, performance
+       practice, archival research, and the cultural history of music
+       education.</p>
+
+    <h3 class="subhead">Current Projects</h3>
     <ul class="entries">
       <li>
-        <span class="entry-title">Alfred Cortot’s <em>Cours d’interprétation</em> and the pedagogy of piano performance at the École Normale de Musique</span>
+        <span class="entry-title">Alfred Cortot, the École Normale de Musique, and the pedagogy of interpretation</span>
+        <p class="entry-desc">Research on Cortot’s <em>cours d’interprétation</em>, archival traces of
+           piano teaching, and the transmission of performance practice in
+           twentieth-century France.</p>
       </li>
       <li>
-        <span class="entry-title">Musical Education and Cultural Exchange in Morocco: From the Protectorate to the Present</span>
+        <span class="entry-title">Musical Education and Cultural Exchange in Morocco</span>
+        <p class="entry-desc">A study of conservatory culture, musical education, and Franco-Moroccan
+           exchange from the Protectorate period to the present.</p>
         <span class="entry-meta">ODU Summer Research Fellowship</span>
       </li>
       <li>
-        <span class="entry-title">The Latent Artistry Engine — a multimodal model that surfaces interpretive patterns across historical piano recordings, using music as a humanistic interface for understanding AI</span>
-        <span class="entry-meta">ODU ARTnership project</span>
+        <span class="entry-title">AI-Assisted Analysis of Historical Piano Performance</span>
+        <p class="entry-desc">A multimodal research project using large corpora of historical
+           recordings and scores to surface patterns of timing, articulation,
+           and interpretation across pianistic traditions.</p>
+        <span class="entry-meta">ODU ARTnership Project</span>
       </li>
       <li>
         <span class="entry-title">“Revivre le cours: Alfred Cortot, archives pédagogiques et transmission interprétative sur le Steinway 1907”</span>
@@ -278,7 +316,7 @@
     <ul class="entries">
       <li>
         <span class="entry-title">“Pianistic Memorization as Cultural Memory: Insights from Religious and Devotional Traditions”</span>
-        <span class="entry-meta">Journal of Piano Research · forthcoming · <a href="#">Article</a></span>
+        <span class="entry-meta">Journal of Piano Research</span>
       </li>
       <li>
         <span class="entry-title">“The Seventh Book: An Interdisciplinary Approach to Piano Study”</span>
@@ -294,6 +332,7 @@
        ========================================================= -->
   <section id="performance">
     <h2>Performance</h2>
+    <h3 class="subhead">Selected Performances</h3>
     <ul class="entries">
       <li>
         <span class="entry-title">Bruman Concert Series</span>
@@ -304,32 +343,28 @@
         <span class="entry-meta">Getty Center, Los Angeles · July 18, 2026</span>
       </li>
       <li>
-        <span class="entry-title">Feldman Concert Series — chamber music</span>
+        <span class="entry-title">Feldman Concert Series</span>
         <span class="entry-meta">Chrysler Museum, Norfolk · June 2026</span>
       </li>
       <li>
-        <span class="entry-title">Concerts in the Dome — chamber music</span>
+        <span class="entry-title">Concerts in the Dome</span>
         <span class="entry-meta">Mount Wilson · May 24, 2026</span>
       </li>
       <li>
-        <span class="entry-title">Virginia Arts Festival — Celebrating F. Ludwig Diehn: flute and violin sonatas</span>
-        <span class="entry-meta">March 11, 2026</span>
+        <span class="entry-title">Virginia Arts Festival — Celebrating F. Ludwig Diehn</span>
+        <span class="entry-meta">Flute and violin sonatas · March 11, 2026</span>
       </li>
       <li>
-        <span class="entry-title">Jimmy Carter Forum on U.S.–China Relations — with soprano Shuwei Qiu</span>
-        <span class="entry-meta">The Carter Center, Atlanta · January 29, 2026</span>
+        <span class="entry-title">Jimmy Carter Forum on U.S.–China Relations</span>
+        <span class="entry-meta">With soprano Shuwei Qiu · The Carter Center, Atlanta · January 29, 2026</span>
       </li>
       <li>
-        <span class="entry-title">Masters in the Chapel — piano quartets by Mozart and Fauré</span>
-        <span class="entry-meta">Venice, CA · January 26, 2026</span>
+        <span class="entry-title">Masters in the Chapel</span>
+        <span class="entry-meta">Piano quartets by Mozart and Fauré · Venice, CA · January 26, 2026</span>
       </li>
       <li>
         <span class="entry-title">Redfish Music Festival, Fall Tour</span>
-        <span class="entry-meta">Brookings, North Bend &amp; Bandon, Oregon · September 2025</span>
-      </li>
-      <li>
-        <span class="entry-title">Henry J. Bruman Summer Chamber Music Festival — piano quartets by Mozart and Fauré</span>
-        <span class="entry-meta">UCLA · August 6, 2025</span>
+        <span class="entry-meta">Brookings, North Bend, and Bandon, Oregon · September 2025</span>
       </li>
     </ul>
   </section>
@@ -342,20 +377,13 @@
   <section id="teaching">
     <h2>Teaching</h2>
     <p>At Old Dominion University, Deak directs keyboard studies and teaches
-       applied piano alongside courses in music history and pedagogy — among
-       them Music and Ideas, Music in the Romantic Era, Music of the 20th
-       Century to the Present, Applied Music Literature, and Applied Music
-       Pedagogy.</p>
-    <ul class="entries">
-      <li>
-        <span class="entry-title"><a href="https://artistworks.com/beginner-piano">“Piano with Zachary Deak”</a></span>
-        <span class="entry-meta">Online instruction via the ArtistWorks platform</span>
-      </li>
-      <li>
-        <span class="entry-title">Previously</span>
-        <span class="entry-meta">Cal State University, Los Angeles · Cuesta College, San Luis Obispo</span>
-      </li>
-    </ul>
+       applied piano, music history, and pedagogy. His courses include Music
+       and Ideas, Music in the Romantic Era, Music of the 20th Century to the
+       Present, Applied Music Literature, and Applied Music Pedagogy.</p>
+    <p>He also teaches online through ArtistWorks in the course
+       <a href="https://artistworks.com/beginner-piano">“Piano with Zachary Deak.”</a></p>
+    <p>Previously, he taught at Cal State University, Los Angeles and Cuesta
+       College in San Luis Obispo.</p>
   </section>
 
   <div class="staff" role="presentation"></div>
@@ -372,7 +400,7 @@
       </div>
       <div>
         <dt>Office</dt>
-        <dd>Diehn Center for the Performing Arts · Old Dominion University</dd>
+        <dd>Diehn Center for the Performing Arts, Room 2112 · Old Dominion University</dd>
       </div>
       <div>
         <dt>Elsewhere</dt>
