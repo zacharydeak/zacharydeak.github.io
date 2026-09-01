@@ -134,15 +134,26 @@
     font-family: var(--sans);
     font-size: 0.82rem;
     letter-spacing: 0.04em;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.1rem;
+    row-gap: 0.3rem;
   }
   nav.links a {
     border: none;
     color: var(--muted);
-    margin-right: 1.4rem;
     display: inline-block;
-    margin-bottom: 0.3rem;
   }
   nav.links a:hover { color: var(--ink); }
+
+  /* Keep the nav on one line at normal desktop/laptop widths */
+  @media (min-width: 700px) {
+    nav.links {
+      flex-wrap: nowrap;
+      column-gap: 1rem;
+    }
+    nav.links a { flex-shrink: 0; }
+  }
 
   /* ===========================================================
      SIGNATURE DIVIDER — a five-line musical staff in hairline
@@ -289,8 +300,8 @@
   <section id="research">
     <h2>Research</h2>
     <p>My research examines musical interpretation across three related
-       settings: recorded performance, pedagogical and archival
-       transmission, and musical institutions. Current projects range from
+       settings: recorded performance, pedagogy and transmission, and
+       musical institutions. Current projects range from
        computational analysis of more than a century of recorded piano
        performance to Alfred Cortot’s teaching at the École Normale de
        Musique de Paris and the history of Franco-Moroccan conservatory
@@ -317,13 +328,13 @@
       </li>
       <li>
         <span class="entry-title">Alfred Cortot, the École Normale de Musique, and the Transmission of Pianistic Interpretation</span>
-        <p class="entry-desc">This project examines Alfred Cortot’s <em>cours d’interprétation</em>,
-           his teaching editions and recordings, and the transmission of
-           pianistic interpretation in twentieth-century France. Drawing on
-           archival research at the Bibliothèque musicale La Grange-Fleuret
-           and the École Normale de Musique de Paris, it asks how
-           interpretive knowledge that is difficult to capture in notation
-           can nevertheless be articulated, taught, and preserved.</p>
+        <p class="entry-desc">This project examines Cortot’s pedagogical approach to
+           interpretation, particularly his use of poetic, symbolic, and
+           metaphorical language to communicate musical ideas. It considers
+           the imaginative and often highly subjective ways in which he
+           characterizes works, passages, and interpretive problems, and
+           places this approach within the Symbolist and Wagnerian
+           intellectual culture that shaped his thinking.</p>
         <p class="entry-desc">“Revivre le cours: Alfred Cortot, archives pédagogiques et transmission interprétative sur le Steinway 1907”</p>
         <span class="entry-meta">Crédit Agricole d’Île-de-France Research and Practice Fellowship · Bibliothèque musicale La Grange-Fleuret, Paris · 2026</span>
       </li>
